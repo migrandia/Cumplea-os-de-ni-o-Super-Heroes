@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>¡Misión Cumpleaños! Mateo #5</title>
-    <meta property="og:title" content="¡Alerta de Fiesta! Mateo cumple 5">
-    <meta property="og:description" content="14 de Marzo. ¡Una misión súper especial te espera en la liga de Mateo!">
+    <title>¡Misión Animada! Mateo #5</title>
+    <meta property="og:title" content="¡Alerta de Fiesta Animada! Mateo cumple 5">
+    <meta property="og:description" content="14 de Marzo. ¡Una misión llena de acción te espera en la liga de Mateo!">
     <meta property="og:image" content="https://www.dropbox.com/scl/fi/i0b56p27u5h504y0y8a4a/heroe-portada.jpg?rlkey=f5f5f5f5f5f5f5f5f5f5f5f5&raw=1">
     <meta property="og:type" content="website">
+
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* === PALETA SÚPER HÉROE (PRIMARIOS) === */
-            --rojo-comic: #e62117;    /* Botones, acentos de poder */
-            --azul-heroe: #164396;    /* Fondo principal de la misión */
-            --amarillo-comic: #ffcc00; /* Títulos, contador de energía */
+            --rojo-comic: #e62117;
+            --azul-heroe: #164396;
+            --amarillo-comic: #ffcc00;
             --texto-oscuro: #000000;
             --blanco: #ffffff;
-            --ancho-max: 480px;       /* Simulación móvil */
+            --ancho-max: 480px;
         }
 
         body {
@@ -31,7 +31,7 @@
             overflow-x: hidden;
         }
 
-        /* Contenedor principal con textura de cómic */
+        /* 2. FONDO EN MOVIMIENTO */
         .wrapper {
             max-width: var(--ancho-max);
             margin: 0 auto;
@@ -41,9 +41,16 @@
             overflow: hidden;
             background-image: url('https://www.transparenttextures.com/patterns/comic-books.png');
             border: 4px solid var(--texto-oscuro);
+            /* Animación de fondo */
+            animation: backgroundMove 60s linear infinite;
         }
 
-        /* === PORTADA DE ACCIÓN (ESTILO PORTADA DE CÓMIC) === */
+        @keyframes backgroundMove {
+            from { background-position: 0 0; }
+            to { background-position: 500px 1000px; }
+        }
+
+        /* 1. HÉROE FLOTANTE */
         .hero-cover {
             position: relative;
             padding: 30px 20px;
@@ -51,24 +58,39 @@
             border-bottom: 4px solid var(--texto-oscuro);
         }
 
-        .img-heroe {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 4px;
-            border: 3px solid var(--texto-oscuro);
+        .img-container {
+            position: relative;
+            /* Animación de flotado */
+            animation: float 3s ease-in-out infinite;
         }
 
-        /* Títulos bang! pop! style */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .img-heroe {
+            width: 100%; height: auto; display: block;
+            border-radius: 4px; border: 3px solid var(--texto-oscuro);
+        }
+
+        /* 3. TÍTULOS QUE "VIBRAN" */
         h1.comic-title {
             font-family: 'Bangers', cursive;
             font-size: 3.8rem;
             color: var(--amarillo-comic);
             margin: 15px 0 5px;
             text-transform: uppercase;
-            letter-spacing: 2px;
             text-shadow: 3px 3px 0px var(--rojo-comic), 5px 5px 0px var(--texto-oscuro);
             transform: rotate(-3deg);
+            /* Animación de vibración */
+            animation: titleShaker 0.3s ease-in-out infinite alternate;
+            display: inline-block;
+        }
+
+        @keyframes titleShaker {
+            0% { transform: rotate(-3deg) translate(2px, 2px); }
+            100% { transform: rotate(-3deg) translate(-2px, -2px); }
         }
 
         .fecha-comic {
@@ -80,147 +102,83 @@
             text-shadow: 1px 1px 0px var(--texto-oscuro);
         }
 
-        /* === SECCIONES DE MISIÓN === */
-        section {
-            padding: 40px 25px;
-            border-bottom: 3px solid var(--texto-oscuro);
-            position: relative;
-        }
+        /* Secciones */
+        section { padding: 40px 25px; border-bottom: 3px solid var(--texto-oscuro); position: relative; }
+        .label-mision { font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase; color: var(--amarillo-comic); margin-bottom: 15px; font-weight: 900; }
+        h2.serif-title { font-family: 'Bangers', cursive; font-size: 2.5rem; color: var(--blanco); margin: 0 0 20px 0; text-transform: uppercase; text-shadow: 2px 2px 0px var(--texto-oscuro); }
+        .texto-heroe { font-size: 1.1rem; line-height: 1.6; color: var(--blanco); max-width: 90%; margin: 0 auto; font-weight: 700; }
 
-        .label-mision {
-            font-size: 0.9rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--amarillo-comic);
-            margin-bottom: 15px;
-            font-weight: 900;
-        }
-
-        h2.serif-title {
+        /* 4. ONOMATOPEYAS EMERGENTES (POW! BANG!) */
+        .onomatopeya {
             font-family: 'Bangers', cursive;
+            position: absolute;
             font-size: 2.5rem;
-            color: var(--blanco);
-            margin: 0 0 20px 0;
-            text-transform: uppercase;
-            text-shadow: 2px 2px 0px var(--texto-oscuro);
+            color: var(--amarillo-comic);
+            text-shadow: 2px 2px 0 var(--rojo-comic), 3px 3px 0 var(--texto-oscuro);
+            opacity: 0;
+            transform: scale(0);
+            animation: popIn 0.5s ease-out forwards;
+            z-index: 5;
         }
 
-        .texto-heroe {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: var(--blanco);
-            max-width: 90%;
-            margin: 0 auto;
-            font-weight: 700;
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0) rotate(-15deg); }
+            70% { opacity: 1; transform: scale(1.2) rotate(10deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
         }
 
-        /* Tarjetas de datos (Estilo panel de control) */
-        .card-panel {
-            background-color: var(--blanco);
-            padding: 25px;
-            border-radius: 8px;
-            border: 3px solid var(--texto-oscuro);
-            margin-bottom: 25px;
-            box-shadow: 5px 5px 0px rgba(0,0,0,0.1);
+        /* Paneles */
+        .card-panel { background-color: var(--blanco); padding: 25px; border-radius: 8px; border: 3px solid var(--texto-oscuro); margin-bottom: 25px; box-shadow: 5px 5px 0px rgba(0,0,0,0.1); position: relative;}
+
+        /* 6. BOTONES CON BRILLO */
+        .btn-lujo {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            margin-top: 15px; padding: 12px 25px;
+            background-color: var(--amarillo-comic); color: var(--texto-oscuro);
+            text-decoration: none; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase;
+            border: 3px solid var(--texto-oscuro); border-radius: 50px;
+            font-weight: 900; position: relative; overflow: hidden;
         }
 
-        .card-panel h3 {
-            font-family: 'Bangers', cursive;
-            font-size: 1.8rem;
-            margin-top: 0;
-            color: var(--rojo-comic);
+        /* Efecto de brillo que pasa */
+        .btn-lujo::after {
+            content: '';
+            position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(to bottom right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
+            transform: rotate(45deg);
+            animation: sheen 3s infinite;
         }
 
-        /* === BOTÓN DE UBICACIÓN "RADAR" CON ICONO DE ENLACE === */
-        .btn-radar {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px; /* Espacio entre el icono y el texto */
-            margin-top: 15px;
-            padding: 12px 25px;
-            background-color: var(--amarillo-comic);
-            color: var(--texto-oscuro);
-            text-decoration: none;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            border: 3px solid var(--texto-oscuro);
-            border-radius: 50px;
-            transition: 0.3s;
-            font-weight: 900;
+        @keyframes sheen {
+            0% { transform: translateY(-100%) rotate(45deg); }
+            100% { transform: translateY(100%) rotate(45deg); }
         }
 
-        /* Estilo del icono de pin (SVG) */
-        .icon-map-pin {
-            width: 16px;
-            height: 16px;
-            fill: var(--texto-oscuro); /* El icono se adapta al color del texto */
-        }
-
-        .btn-radar:hover {
-            background-color: var(--blanco);
-            transform: scale(1.05);
-        }
-
-        /* === CONTADOR DE ENERGÍA SÚPER === */
-        .timer-container {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin: 25px 0;
-        }
-
-        .t-block {
-            background: white;
-            padding: 10px;
-            border-radius: 8px;
-            min-width: 65px;
-            border: 3px solid var(--texto-oscuro);
-            box-shadow: 3px 3px 0px rgba(0,0,0,0.1);
-        }
-
+        /* 5. CONTADOR QUE GIRA */
+        .timer-container { display: flex; justify-content: center; gap: 12px; margin: 25px 0; }
+        .t-block { background: white; padding: 10px; border-radius: 8px; min-width: 65px; border: 3px solid var(--texto-oscuro); box-shadow: 3px 3px 0px rgba(0,0,0,0.1); }
         .t-val {
-            display: block;
-            font-size: 2rem;
-            color: var(--rojo-comic);
-            font-weight: 900;
-            line-height: 1;
-            font-family: 'Bangers', cursive;
+            display: block; font-size: 2.2rem; color: var(--rojo-comic); font-weight: 900; line-height: 1; font-family: 'Bangers', cursive;
+            /* Animación de giro al cambiar */
+            transition: transform 0.3s ease-in-out;
         }
+        .t-lab { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--texto-oscuro); font-weight: bold; }
 
-        .t-lab {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--texto-oscuro);
-            font-weight: bold;
-        }
-
-        /* === RSVP FINAL "ALERTA SÚPER" === */
+        /* RSVP Animado */
         .btn-alerta {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 20px 40px;
-            background-color: var(--rojo-comic);
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            border-radius: 50px;
-            width: 85%;
-            box-sizing: border-box;
-            font-weight: 900;
-            border: 4px solid var(--texto-oscuro);
+            display: inline-block; margin-top: 30px; padding: 20px 40px;
+            background-color: var(--rojo-comic); color: white; text-decoration: none;
+            font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;
+            border-radius: 50px; width: 85%; box-sizing: border-box;
+            font-weight: 900; border: 4px solid var(--texto-oscuro);
             box-shadow: 5px 5px 0px rgba(0,0,0,0.2);
-            animation: pulse 1.5s infinite;
+            animation: pulseAlerta 1.5s infinite;
         }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(230, 33, 23, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(230, 33, 23, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(230, 33, 23, 0); }
+        @keyframes pulseAlerta {
+            0% { box-shadow: 0 0 0 0 rgba(230, 33, 23, 0.8); transform: scale(1); }
+            70% { box-shadow: 0 0 0 20px rgba(230, 33, 23, 0); transform: scale(1.05); }
+            100% { box-shadow: 0 0 0 0 rgba(230, 33, 23, 0); transform: scale(1); }
         }
     </style>
 </head>
@@ -229,18 +187,20 @@
     <div class="wrapper">
         
         <div class="hero-cover">
-            <img src="https://www.dropbox.com/scl/fi/i0b56p27u5h504y0y8a4a/heroe-portada.jpg?rlkey=f5f5f5f5f5f5f5f5f5f5f5f5&raw=1" class="img-heroe" alt=" Mateo Superhéroe">
+            <div class="img-container">
+                <img src="https://www.dropbox.com/scl/fi/i0b56p27u5h504y0y8a4a/heroe-portada.jpg?rlkey=f5f5f5f5f5f5f5f5f5f5f5f5&raw=1" class="img-heroe" alt=" Mateo Superhéroe">
+            </div>
             <h1 class="comic-title">Mateo</h1>
             <p class="fecha-comic">¡Cumple 5 Años!</p>
-            <div style="width: 80px; height: 5px; background: var(--texto-oscuro); margin: 15px auto;"></div>
             <p style="font-size: 1.1rem; letter-spacing: 2px; color: var(--azul-heroe); font-weight: bold;">14 . MARZO . 2027</p>
         </div>
 
         <section>
+            <span class="onomatopeya" style="top: 10px; right: 10px; animation-delay: 0.5s;">¡POW!</span>
             <p class="label-mision">Iniciando Misión</p>
             <h2 class="serif-title">¡Alerta de Fiesta!</h2>
             <p class="texto-heroe">
-                "¡Una misión súper especial te espera! La ciudad necesita nuevos héroes y tú eres el elegido. Únete a Mateo en su 5º aniversario para una tarde de juegos, risas y ¡mucho poder!"
+                "¡Una misión súper especial te espera! Únete a Mateo en su 5º aniversario para una tarde de poder."
             </p>
         </section>
 
@@ -255,42 +215,56 @@
         </section>
 
         <section>
+            <span class="onomatopeya" style="top: 20px; left: 20px; animation-delay: 1s; color: var(--rojo-comic);">¡BOOM!</span>
             <div class="card-panel">
-                <p class="label-mision" style="margin-top: 0; color: #666;">COORDS. DE ENCUENTRO</p>
                 <h3>El Cuartel</h3>
                 <p><strong>Salón de Fiestas "Súper Diversión"</strong></p>
-                <p>Calle del Poder #123, Ciudad Héroe</p>
-                <div style="width: 40px; height: 1px; background: #eee; margin: 15px auto;"></div>
-                <p><strong>16:00 Horas</strong></p>
-                
-                <a href="http://googleusercontent.com/maps.google.com/9" target="_blank" class="btn-radar">
-                    <svg class="icon-map-pin" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <p>Calle del Poder #123, 16:00 Hrs</p>
+                <a href="http://googleusercontent.com/maps.google.com/9" target="_blank" class="btn-lujo">
+                    <svg style="width:16px; height:16px; fill:var(--texto-oscuro);" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                     ACTIVA TU RADAR
                 </a>
             </div>
         </section>
 
         <section style="padding: 80px 25px; background-color: white; border: none; border-radius: 12px;">
-            <h1 class="comic-title" style="font-size: 3rem; transform: rotate(0); margin-top: 0;">¿Aceptas?</h1>
-            <p style="font-size: 1.2rem; color: #000; margin-bottom: 40px; font-weight: 900; line-height: 1.4;">
-                "¡Mateo te necesita en su equipo! Por favor, confirma tu asistencia para hacer este día inolvidable."
-            </p>
-            <a href="https://wa.me/521234567890?text=Hola! Confirmo mi asistencia al cumpleaños de Mateo." class="btn-alerta">CONFIRMAR MISIÓN</a>
+            <h1 class="comic-title" style="font-size: 3rem; transform: rotate(0); margin-top: 0; animation: none;">¿Aceptas?</h1>
+            <a href="https://wa.me/521234567890?text=Hola! Confirmo mi asistencia al cumple de Mateo." class="btn-alerta">CONFIRMAR MISIÓN</a>
         </section>
 
     </div>
 
     <script>
-        // CONTADOR FUNCIONAL (AJUSTADO A 2027 PARA PROBAR)
+        // CONTADOR FUNCIONAL CON EFECTO DE GIRO
+        const ids = ['d', 'h', 'm', 's'];
+        const lastValues = {};
+
         function timer() {
             const dest = new Date("March 14, 2027 16:00:00").getTime();
             const now = new Date().getTime();
             const diff = dest - now;
+
             if (diff > 0) {
-                document.getElementById('d').innerText = String(Math.floor(diff / (1000*60*60*24))).padStart(2, '0');
-                document.getElementById('h').innerText = String(Math.floor((diff % (1000*60*60*24)) / (1000*60*60))).padStart(2, '0');
-                document.getElementById('m').innerText = String(Math.floor((diff % (1000*60*60)) / (1000*60))).padStart(2, '0');
-                document.getElementById('s').innerText = String(Math.floor((diff % (1000*60)) / 1000)).padStart(2, '0');
+                const parts = {
+                    d: Math.floor(diff / (1000*60*60*24)),
+                    h: Math.floor((diff % (1000*60*60*24)) / (1000*60*60)),
+                    m: Math.floor((diff % (1000*60*60)) / (1000*60)),
+                    s: Math.floor((diff % (1000*60)) / 1000)
+                };
+
+                ids.forEach(id => {
+                    const val = String(parts[id]).padStart(2, '0');
+                    const el = document.getElementById(id);
+                    
+                    // Solo animar si el valor cambia
+                    if (lastValues[id] !== val) {
+                        el.innerText = val;
+                        // Efecto de giro rápido
+                        el.style.transform = 'rotateX(360deg)';
+                        setTimeout(() => el.style.transform = 'rotateX(0deg)', 300);
+                        lastValues[id] = val;
+                    }
+                });
             }
         }
         timer(); setInterval(timer, 1000);
